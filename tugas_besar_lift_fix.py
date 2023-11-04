@@ -1,3 +1,28 @@
+def hapus_none(array):
+  '''
+  Menghapus semua elemen none pada array
+  '''
+  arr = []
+  for i in range(len(array)):
+    if array[i] != None:
+      arr = tambahkan(arr, array[i])
+
+  return arr
+
+
+def tak_berulang(array):
+  '''
+  Membuat tidak ada elemen di dalam array yang berulang berturut-turut
+  '''
+  array_tak_berulang = []
+
+  for i in range(len(array)-1):
+    if array[i] != array[i+1]:
+      array_tak_berulang = tambahkan(array_tak_berulang, array[i])
+
+  array_tak_berulang = tambahkan(array_tak_berulang, array[len(array)-1])
+  return array_tak_berulang
+  
 def sort_descending(array):
   '''
   function buat sorting array (dari tinggi ke rendah)
