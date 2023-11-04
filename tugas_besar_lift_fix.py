@@ -1,3 +1,22 @@
+def pengguna_keluar(pengguna):
+  '''
+  Menghapus tujuan pengguna pada array pengguna ketika mencapai lantai yang dituju
+  '''
+  for i in range(len(pengguna)):
+    if i in pengguna[i]:
+      pengguna[i] = hapuskan(pengguna[i], i)
+  return pengguna
+
+
+def pengguna_kosong(pengguna):
+  '''
+  Menentukan apakah tiap-tiap isi array pengguna tidak memiliki nilai
+  '''
+  for i in range(len(pengguna)):
+    if pengguna[i]:
+      return False
+  return True
+
 def lift_naik(pengguna, alur_lift, alur_lift_atas):
   '''
   Track pergerakan ketika lift naik, menghapus tujuan yang terpenuhi pada array pengguna, dan track total berat dalam lift
