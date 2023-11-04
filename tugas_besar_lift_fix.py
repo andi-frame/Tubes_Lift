@@ -1,3 +1,29 @@
+def sort_descending(array):
+  '''
+  function buat sorting array (dari tinggi ke rendah)
+  '''
+  for i in range(len(array)):
+      for j in range(i, len(array)):
+          if array[i] < array[j]:
+              penampung = array[i]
+              array[i] = array[j]
+              array[j] = penampung
+  return array
+
+
+def sort_ascending(array):
+  '''
+  function buat sorting array (dari rendah ke tinggi)
+  '''
+  for i in range(len(array)):
+      for j in range(i, len(array)):
+          if array[i] > array[j]:
+              penampung = array[j]
+              array[j] = array[i]
+              array[i] = penampung
+  return array
+
+
 def pengguna_keluar(pengguna):
   '''
   Menghapus tujuan pengguna pada array pengguna ketika mencapai lantai yang dituju
