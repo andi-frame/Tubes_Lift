@@ -1,33 +1,3 @@
-def tambahkan(arr, a):
-  '''
-  Menambahkan elemen a ke indeks terakhir array arr dan menambah 1 satuan panjang array arr
-  '''
-  array = [i for i in range(len(arr)+1)]
-  for i in range(len(arr)):
-    array[i] = arr[i]
-  array[-1] = a
-  return array
-
-
-def hapuskan(array, a):
-  '''
-  Menghapus elemen a pada array dan mengurangi 1 satuan panjang array
-  '''
-  for i in range(len(array)):
-    if array[i] == a:
-      array[i] = None
-
-  count = 0
-  arr = [None] * (len(array) - 1)
-  for i in range(len(array)):
-    if array[i] != None:
-      arr[count] = array[i]
-      count += 1
-      
-  return arr
-
-
-
 def hapus_none(array):
   '''
   Menghapus semua elemen none pada array
