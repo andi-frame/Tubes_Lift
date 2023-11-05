@@ -51,7 +51,8 @@ def tak_berulang(array):
 
   array_tak_berulang = tambahkan(array_tak_berulang, array[len(array)-1])
   return array_tak_berulang
-  
+
+
 def sort_descending(array):
   '''
   function buat sorting array (dari tinggi ke rendah)
@@ -97,6 +98,73 @@ def pengguna_kosong(pengguna):
       return False
   return True
 
+
+def masukkan_input_user(pengguna):
+  '''
+  User input meliputi: total pengguna tiap lantai dengan permintaan dan tujuan tiap-tiap pengguna
+  '''
+  print()
+  print()
+  print("-------------------------------------------------------------")
+  # Input lantai-lantai yang memiliki permintaan
+  jumlah_permintaan = int(input("Masukkan total posisi lantai berbeda yang memiliki permintaan: "))
+  lantai_permintaan = [0 for i in range(jumlah_permintaan)]
+  for i in range(jumlah_permintaan):
+    lantai_permintaan[i] = int(input(f"{i+1}. Masukkan posisi lantai yang memiliki permintaan: "))
+  lantai_permintaan = sort_ascending(lantai_permintaan)
+  print()
+
+  
+  # Input permintaan tiap lantai yang memiliki permintaan
+  for i in lantai_permintaan:
+    total_pengguna_lantai = int(input(f"Masukkan total pengguna di lantai ke-{i}: "))
+
+
+    # Input tujuan tiap-tiap pengguna
+    for j in range(total_pengguna_lantai):
+      tujuan = int(input(f"Masukkan tujuan pengguna ke-{j+1}: "))
+      pengguna[i] = tambahkan(pengguna[i], tujuan)
+    print()
+
+
+  # Menghilangkan input elemen tujuan berulang dan ketika input tujuan == lantai saat ini
+  pengguna = pengguna_keluar(pengguna)
+  for i in range(len(pengguna)):
+    if len(pengguna[i]) > 1:
+      pengguna[i] = tak_berulang(pengguna[i])
+  
+  return pengguna
+
+
+def menentukan_arah(pengguna, alur_lift): 
+  '''
+  menentukan arah dan posisi permintaan awal
+  '''
+  # Cek tiap-tiap lantai yang memiliki permintaan
+  posisi_lift_terakhir = alur_lift[-1]
+  ada_permintaan = []
+  for i in range(len(pengguna)):
+    if pengguna[i]:
+      ada_permintaan = tambahkan(ada_permintaan, i)
+
+
+  # Cek jarak permintaan terdekat dengan posisi lift terakhir
+  terdekat = int(((ada_permintaan[0] - posisi_lift_terakhir)**2)**(1/2))
+  lantai_terdekat = ada_permintaan[0]
+  for i in range(len(ada_permintaan)):
+    jarak = int(((ada_permintaan[i] - posisi_lift_terakhir)**2)**(1/2))
+    if jarak < terdekat:
+      terdekat = jarak
+      lantai_terdekat = ada_permintaan[i]
+
+
+  # Cek arah pergerakan lift sesuai permintaan awal
+  if pengguna[lantai_terdekat][0] > lantai_terdekat:
+    arah = True
+  if pengguna[lantai_terdekat][0] < lantai_terdekat:
+    arah = False
+  
+  return arah, lantai_terdekat
 def lift_naik(pengguna, alur_lift, alur_lift_atas):
   '''
   Track pergerakan ketika lift naik, menghapus tujuan yang terpenuhi pada array pengguna, dan track total berat dalam lift
