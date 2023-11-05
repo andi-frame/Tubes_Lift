@@ -1,3 +1,19 @@
+# PROGRAM: LIFT
+
+
+# KAMUS:
+# TOTAL_LANTAI : integer - Total lantai gedung
+# BERAT_PENGGUNA_MAKSIMUM : integer - Batas maksimum berat di dalam lift
+# POSISI_AWAL_LIFT : integer - Posisi awal lift
+# alur_lift : array of integer - Alur pergerakan lift
+# alur_lift_atas : array of integer - Alur pergerakan lift ketika naik
+# alur_lift_bawah : array of integer - Alur pergerakan lift ketika turun
+# arah : boolean - Pergerakan ke atas bernilai True, ke bawah bernilai False
+# pengguna : matrix of integer - Menyimpan data posisi dan permintaan masing-masing pengguna
+
+
+# ALGORITMA:
+# FUNCTIONS:
 def tambahkan(arr, a):
   '''
   Menambahkan elemen a ke indeks terakhir array arr dan menambah 1 satuan panjang array arr
